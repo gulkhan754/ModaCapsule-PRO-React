@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capsule Wardrobe & Kaspi Matcher</title>
+    <!-- FontAwesome иконкалары -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS файлына сілтеме -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- 1. ОБРАЗ ҚҰРАСТЫРУ БӨЛІМІ -->
+        <section class="card-section">
+            <h2><i class="fa-solid fa-wand-magic-sparkles"></i> Образ құрастыру</h2>
+            
+            <div class="filter-grid">
+                <div class="form-group">
+                    <label><i class="fa-solid fa-cloud-sun"></i> Ауа райы:</label>
+                    <select id="weatherSelect">
+                        <option value="warm">Қоңыр салқын (+10°C ... +19°C)</option>
+                        <option value="hot">Ыстық (+20°C ... +30°C)</option>
+                        <option value="cold">Салқын (0°C ... +9°C)</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fa-solid fa-location-dot"></i> Оқиға орны:</label>
+                    <select id="eventSelect">
+                        <option value="uni">Оқу / Университет</option>
+                        <option value="walk">Серуен / Достармен</option>
+                        <option value="date">Кездесу / Кешкі жиын</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fa-solid fa-palette"></i> Түс эстетикасы:</label>
+                    <select id="aestheticSelect">
+                        <option value="nude">Nude & Soft Pastel</option>
+                        <option value="monochrome">Monochrome & Black</option>
+                        <option value="bright">Accent & Bright</option>
+                    </select>
+                </div>
+            </div>
+
+            <button type="button" id="generateBtn" class="btn-primary">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> Образ құрастыру
+            </button>
+
+            <!-- Образ нәтижесі шығатын орын -->
+            <div id="outfitResult" class="outfit-result-box" style="display: none;"></div>
+        </section>
+
+        <!-- 2. МЕНІҢ КАПСУЛАМ (СУРЕТТЕН АЛЫНҒАН 14 КИІМ) -->
+        <section class="card-section">
+            <h2><i class="fa-solid fa-boxes-stacked"></i> Менің капсулам</h2>
+            <div id="wardrobeList" class="wardrobe-grid">
+                
+                <div class="wardrobe-card">
+                    <div class="card-info">
+                        <h4>Оверсайз Блейзер</h4>
+                        <span><i class="fa-solid fa-tag"></i> TOP • <span class="color-dot" style="background: #f5f5dc;"></span></span>
+                    </div>
+                    <button class="btn-delete"><i class="fa-solid fa-trash-can"></i></button>
+                </div>
+
+                <div class="wardrobe-card">
+                    <div class="card-info">
+                        <h4>Палаццо Шалбар</h4>
+                        <span><i class="fa-solid fa-tag"></i> BOTTOM • <span class="color-dot" style="background: #f5f5dc;"></span></span>
+                    </div>
+                    <button class="btn-delete"><i class="fa-solid fa-trash-can"></i></button>
+                </div>
+
+                <div class="wardrobe-card">
+                    <div class="card-info">
+                        <h4>Базалық Ақ Футболка</h4>
+                        <span><i class="fa-solid fa-tag"></i> TOP • <span class="color-dot" style="background: #ffffff;"></span></span>
+                    </div>
+                    <button class="btn-delete"><i class="fa-solid fa-trash-can"></i></button>
+                </div>
+
+                <div class="wardrobe-card">
+                    <div class="card-info">
+                        <h4>джинсы</h4>
+                        <span><i class="fa-solid fa-tag"></i> BOTTOM • <span class="color-dot" style="background: #87ceeb;"></span></span>
+                    </div>
+                    <button class="btn-delete"><i class="fa-solid fa-trash-can"></i></button>
+                </div>
+
+                <div class="wardrobe-card">
+                    <div class="card-info">
+                        <h4>Шорты / Юбка</h4>
+                        <span><i class="fa-solid fa-tag"></i> BOTTOM • <span class="color-dot" style="background: #f5f5dc;"></span></span>
+                    </div>
+                    <button class="btn-delete"><i class="fa-solid fa-trash-can"></i></button>
+                </div>
+
+                <div class="wardrobe-card">
+                    <div class="card-info">
+                        <h4>Биік Етік</h4>
+                        <span><i class="fa-solid fa-tag"></i> SHOES • <span class="color-dot" style="background: #000000;"></span></span>
+                    </div>
+                    <button class="btn-delete"><i class="fa-solid fa-trash-can"></i></button>
+                </div>
+
+                <div class="wardrobe-card">
+                    <div class="card-info">
+                        <h4>Палаццо Шалбар</h4>
+                        <span><i class="fa-solid fa-tag"></i> BOTTOM • <span class="color-dot" style="background: #000000;"></span></span>
+                    </div>
+                    <button class="btn-delete"><i class="fa-solid fa-trash-can"></i></button>
+                </div>
+
+                <div class="wardrobe-card">
+                    <div class="card-info">
+                        <h4>кроссовки</h4>
+                        <span><i class="fa-solid fa-tag"></i> SHOES • <span class="color-dot" style="background: #ffffff;"></span></span>
+                    </div>
+                    <button class="btn-delete"><i class="fa-solid fa-trash-can"></i></button>
+                </div>
+
+                <div class="wardrobe-card">
+                    <div class="card-info">
+                        <h4>Қара Элегантты Пальто</h4>
+                        <span><i class="fa-solid fa-tag"></i> TOP • <span class="color-dot" style="background: #000000;"></span></span>
+                    </div>
+                    <button class="btn-delete"><i class="fa-solid fa-trash-can"></i></button>
+                </div>
+
+                <div class="wardrobe-card">
+                    <div class="card-info">
+                        <h4>Қара Көйлек</h4>
+                        <span><i class="fa-solid fa-tag"></i> TOP • <span class="color-dot" style="background: #000000;"></span></span>
+                    </div>
+                    <button class="btn-delete"><i class="fa-solid fa-trash-can"></i></button>
+                </div>
+
+                <div class="wardrobe-card">
+                    <div class="card-info">
+                        <h4>Қара Туфли</h4>
+                        <span><i class="fa-solid fa-tag"></i> SHOES • <span class="color-dot" style="background: #000000;"></span></span>
+                    </div>
+                    <button class="btn-delete"><i class="fa-solid fa-trash-can"></i></button>
+                </div>
+
+                <div class="wardrobe-card">
+                    <div class="card-info">
+                        <h4>Минималистик Клатч</h4>
+                        <span><i class="fa-solid fa-tag"></i> ACCESSORY • <span class="color-dot" style="background: #000000;"></span></span>
+                    </div>
+                    <button class="btn-delete"><i class="fa-solid fa-trash-can"></i></button>
+                </div>
+
+                <div class="wardrobe-card">
+                    <div class="card-info">
+                        <h4>Сумка</h4>
+                        <span><i class="fa-solid fa-tag"></i> ACCESSORY • <span class="color-dot" style="background: #ffffff;"></span></span>
+                    </div>
+                    <button class="btn-delete"><i class="fa-solid fa-trash-can"></i></button>
+                </div>
+
+                <div class="wardrobe-card">
+                    <div class="card-info">
+                        <h4>Куртка</h4>
+                        <span><i class="fa-solid fa-tag"></i> TOP • <span class="color-dot" style="background: #000000;"></span></span>
+                    </div>
+                    <button class="btn-delete"><i class="fa-solid fa-trash-can"></i></button>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- 3. SMART SHOP & KASPI MATCHER БӨЛІМІ -->
+        <section class="card-section">
+            <h2><i class="fa-solid fa-bag-shopping"></i> Smart Shop & Kaspi Matcher</h2>
+            <p class="subtitle">Капсулалық гардеробты толықтыру үшін жетіспейтін трендтегі базалық заттар</p>
+
+            <div class="kaspi-grid">
+                
+                <div class="kaspi-card">
+                    <span class="badge">Must Have</span>
+                    <div class="kaspi-icon"><i class="fa-solid fa-bag-shopping"></i></div>
+                    <div>
+                        <h4>Минималистик Бежевый Сөмке</h4>
+                        <p>Кез келген Nude & Pastel луктарын әдемі толықтырады.</p>
+                    </div>
+                    <a href="https://kaspi.kz/shop/search/?q=минималистик+бежевая+сумка" target="_blank" class="btn-kaspi">
+                        <i class="fa-solid fa-cart-shopping"></i> Kaspi-ден іздеу
+                    </a>
+                </div>
+
+                <div class="kaspi-card">
+                    <span class="badge">Базалық</span>
+                    <div class="kaspi-icon"><i class="fa-solid fa-shirt"></i></div>
+                    <div>
+                        <h4>Ақ Оверсайз Рубашка</h4>
+                        <p>Оқуға және серуенге арналған негізгі капсулалық киім.</p>
+                    </div>
+                    <a href="https://kaspi.kz/shop/search/?q=белая+оверсайз+рубашка" target="_blank" class="btn-kaspi">
+                        <i class="fa-solid fa-cart-shopping"></i> Kaspi-ден іздеу
+                    </a>
+                </div>
+
+                <div class="kaspi-card">
+                    <span class="badge">Тренд</span>
+                    <div class="kaspi-icon"><i class="fa-solid fa-shoe-prints"></i></div>
+                    <div>
+                        <h4>Замша / Кожа Лоферлер</h4>
+                        <p>Ыңғайлы әрі сәнді, блейзерлермен тамаша жарасады.</p>
+                    </div>
+                    <a href="https://kaspi.kz/shop/search/?q=замшевые+лоферы" target="_blank" class="btn-kaspi">
+                        <i class="fa-solid fa-cart-shopping"></i> Kaspi-ден іздеу
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <!-- JS файлына сілтеме -->
+    <script src="script.js"></script>
+</body>
+</html>
